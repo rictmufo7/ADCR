@@ -1,180 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<base target="_top">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FO7 ACTIVE DIRECTORY CHANGE REQUEST</title>
+<meta http-equiv="refresh" content="0; url=https://script.google.com/a/macros/dswd.gov.ph/s/AKfycbyTMZy3LuNei1iPYBl5IPU_Cgkg5AkSMnpvQTaftDoLvHgItSL6wQjGt9O6h1Ur_fV_GA/exec">
 <style>
-:root{--bg:#f5f6f8;--card:#fff;--tx:#1d2330;--mu:#667085;--bd:#e3e6ec;--pr:#2457d6;--ok:#12805c;--wa:#b7791f;--er:#c0392b;--bar:#dbe4fb}
-@media(prefers-color-scheme:dark){:root{--bg:#12151c;--card:#1b2030;--tx:#e8ebf2;--mu:#9aa3b5;--bd:#2c3347;--pr:#6b95ff;--ok:#43c59e;--wa:#e0b052;--er:#ff7a6b;--bar:#2a3556}}
-*{box-sizing:border-box}body{margin:0;font:14px/1.45 system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--tx)}
-header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:12px 18px;background:var(--card);border-bottom:1px solid var(--bd)}
-h1{font-size:16px;margin:0}.who{color:var(--mu);font-size:12px}.badge{padding:2px 8px;border-radius:10px;background:var(--bar);color:var(--pr);font-weight:600;font-size:11px;margin-left:6px}
-nav{display:flex;gap:4px;padding:10px 18px 0}nav button{border:0;background:none;padding:8px 14px;border-bottom:2px solid transparent;color:var(--mu);font:inherit;font-weight:600;cursor:pointer}
-nav button.on{color:var(--pr);border-color:var(--pr)}main{max-width:1100px;margin:0 auto;padding:16px 18px 40px}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:16px;margin-bottom:14px}
-label{display:block;font-size:12px;color:var(--mu);margin:0 0 4px;font-weight:600}
-input,select{width:100%;padding:8px 10px;border:1px solid var(--bd);border-radius:7px;background:var(--bg);color:var(--tx);font:inherit}
-.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.g3{grid-template-columns:2fr 1fr 2fr}
-@media(max-width:600px){.g3{grid-template-columns:1fr}}
-button.pb{background:var(--pr);color:#fff;border:0;border-radius:7px;padding:9px 18px;font:inherit;font-weight:600;cursor:pointer}button.pb:disabled{opacity:.5}
-button.sb{background:none;border:1px solid var(--bd);color:var(--tx);border-radius:7px;padding:7px 12px;font:inherit;cursor:pointer}
-.pv{margin-top:10px;color:var(--mu)}.pv b{color:var(--tx);font-family:ui-monospace,Consolas,monospace}
-.msg{padding:10px 12px;border-radius:8px;margin-top:12px}.msg.ok{background:rgba(18,128,92,.12);color:var(--ok)}.msg.er{background:rgba(192,57,43,.12);color:var(--er)}
-.kpis{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:14px}.kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px 14px}
-.kpi b{display:block;font-size:26px}.kpi span{color:var(--mu);font-size:12px}
-.panels{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}.panels .card{margin:0}h3{margin:0 0 10px;font-size:13px}
-.br{display:grid;grid-template-columns:minmax(90px,38%) 1fr 54px;gap:8px;align-items:center;margin:5px 0;font-size:12px}
-.br .l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bar{height:10px;background:var(--bg);border-radius:5px;overflow:hidden;position:relative}
-.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--bar)}.bar u{position:absolute;left:0;top:0;bottom:0;background:var(--wa)}.br .n{text-align:right;color:var(--mu)}
-.f{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.f>*{width:auto;flex:1 1 140px}.f label{display:flex;align-items:center;gap:6px;margin:0;flex:0 0 auto}.f label input{width:auto}
-.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:12.5px}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--bd);white-space:nowrap}th{color:var(--mu);font-size:11px;text-transform:uppercase}
-.st{padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;background:var(--bar)}.st.PENDING{background:rgba(183,121,31,.18);color:var(--wa)}.st.ACTIVE,.st.RESETTED{background:rgba(18,128,92,.15);color:var(--ok)}.st.INACTIVE,.st.NOT{background:rgba(192,57,43,.15);color:var(--er)}
-.dd{position:relative}.dd summary{list-style:none;padding:8px 10px;border:1px solid var(--bd);border-radius:7px;background:var(--bg);cursor:pointer;display:flex;justify-content:space-between}
-.dd summary::after{content:"\25BE";color:var(--mu)}.dd summary::-webkit-details-marker{display:none}
-.ddm{position:absolute;z-index:5;left:0;right:0;margin-top:4px;background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:6px;box-shadow:0 6px 18px rgba(0,0,0,.15)}
-.ddm label{display:flex;align-items:center;gap:8px;margin:0;padding:6px 8px;border-radius:6px;cursor:pointer;color:var(--tx);font-size:13px;font-weight:500}.ddm label:hover{background:var(--bg)}.ddm input{width:auto}
-.hide{display:none}.muted{color:var(--mu)}.tb{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.tb select{width:auto}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font:16px/1.5 system-ui,Segoe UI,Roboto,sans-serif;background:#f5f6f8;color:#1d2330}
+  .box{text-align:center;padding:24px}
+  h1{font-size:18px;margin:0 0 8px}
+  a{color:#2457d6;font-weight:600}
+  @media(prefers-color-scheme:dark){body{background:#12151c;color:#e8ebf2}a{color:#6b95ff}}
 </style>
 </head>
 <body>
-<header><div><h1>FO7 ACTIVE DIRECTORY CHANGE REQUEST</h1></div><div class="who"><span id="who">Loading...</span><span class="badge hide" id="role"></span></div></header>
-<div id="denied" class="hide"><main><div class="card"><h3>Access restricted</h3><p id="dmsg"></p></div></main></div>
-<div id="app" class="hide">
-<nav><button id="t1" class="on" onclick="tab(1)">New request</button><button id="t2" onclick="tab(2)">Dashboard</button><button id="t3" onclick="tab(3)">Bulk upload</button></nav>
-<main>
-<section id="p1">
- <div class="card">
-  <div class="g"><div><label>Request type</label><select id="type"></select></div><div><label>Requester name</label><input id="rn" autocomplete="off"></div><div><label>Requester email</label><input id="re" type="email" autocomplete="off"></div></div>
-  <div id="newBox">
-  <div class="g g3" style="margin-top:12px">
-   <div><label>First name</label><input id="first" autocomplete="off"></div>
-   <div><label>Middle initial</label><input id="mi" maxlength="1" placeholder="optional"></div>
-   <div><label>Last name</label><input id="last" autocomplete="off"></div>
-  </div>
-  <div class="g" style="margin-top:12px">
-   <div><label>Email address</label><input id="email" type="email" autocomplete="off"></div>
-   <div><label>Division</label><select id="div"></select></div>
-   <div><label>Section</label><select id="sec"></select></div>
-  </div>
-  <div class="pv">Username will be: <b id="un">-</b></div>
-  </div>
-  <div id="editBox" class="hide">
-   <div class="g" style="margin-top:12px">
-    <div><label>AD username (required)</label><input id="eu" autocomplete="off" placeholder="e.g. jmabarrientos"></div>
-    <div id="entBox"><label>Entries to edit</label>
-     <details class="dd" id="dd"><summary id="ddl">Select entries to edit...</summary>
-      <div class="ddm" id="ddm"><label><input type="checkbox" value="first"> First name</label><label><input type="checkbox" value="mi"> Middle name</label><label><input type="checkbox" value="last"> Last name</label><label><input type="checkbox" value="email"> Email address</label></div>
-     </details></div>
-   </div>
-   <div class="g" id="eflds" style="margin-top:12px"></div>
-  </div>
-  <div style="margin-top:14px;display:flex;gap:8px;align-items:center"><button class="pb" id="go" onclick="submitReq(false)">Submit request</button><button class="sb" onclick="resetForm();$('rn').value='';$('re').value=''">Clear</button></div>
-  <div id="res"></div>
- </div>
-</section>
-<section id="p3" class="hide">
- <div class="card">
-  <div class="g"><div><label>Request type</label><select id="bt"></select></div><div><label>Requester name</label><input id="brn" autocomplete="off"></div><div><label>Requester email</label><input id="bre" type="email" autocomplete="off"></div></div>
-  <div class="pv" id="bcols"></div>
-  <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input type="file" id="bf" accept=".csv,.xlsx,.xls" style="width:auto;max-width:100%"><button class="sb" onclick="tpl()">Download template (CSV)</button></div>
-  <div id="bres"></div>
- </div>
-</section>
-<section id="p2" class="hide">
- <div class="f">
-  <select id="fs" onchange="dash()"><option value="">All statuses</option></select>
-  <select id="ft" onchange="dash()"><option value="">All request types</option></select>
-  <select id="fd" onchange="dash()"><option value="">All divisions</option></select>
-  <input id="ff" type="date" title="From" onchange="dash()"><input id="fto" type="date" title="To" onchange="dash()">
-  <input id="fq" placeholder="Search name / username / email" oninput="dq()">
-  <label><input type="checkbox" id="fm" onchange="dash()"> My requests</label>
- </div>
- <div class="kpis"><div class="kpi"><b id="k1">-</b><span>Requests (filtered)</span></div><div class="kpi"><b id="k2">-</b><span>Pending</span></div><div class="kpi"><b id="k3">-</b><span>Requested / acted today</span></div></div>
- <div class="panels">
-  <div class="card"><h3>By status</h3><div id="bs"></div></div>
-  <div class="card"><h3>By request type</h3><div id="bt"></div></div>
-  <div class="card"><h3>By division <span class="muted">(orange = pending)</span></h3><div id="bd"></div></div>
-  <div class="card"><h3>By section <span class="muted">(top 15)</span></h3><div id="bc"></div></div>
- </div>
- <div class="card" style="margin-top:14px">
-  <div class="tb"><h3 style="margin:0">Requests</h3><span class="muted" id="cnt"></span>
-   <span id="adm" class="hide" style="margin-left:auto;display:flex;gap:8px;align-items:center">
-    <a id="lc" target="_blank">CREATE tab</a><a id="lr" target="_blank">RESETPW tab</a>
-    <select id="ms"><option value="">Auto status</option></select><button class="sb" onclick="done()">Mark selected done</button><button class="sb" onclick="selAll()">Select all pending</button>
-   </span></div>
-  <div class="tw"><table><thead id="th"></thead><tbody id="tb"></tbody></table></div>
- </div>
-</section>
-</main></div>
+<div class="box">
+  <h1>FO7 ACTIVE DIRECTORY CHANGE REQUEST</h1>
+  <p>Redirecting&hellip;</p>
+  <p><a id="go" href="https://script.google.com/a/macros/dswd.gov.ph/s/AKfycbyTMZy3LuNei1iPYBl5IPU_Cgkg5AkSMnpvQTaftDoLvHgItSL6wQjGt9O6h1Ur_fV_GA/exec">Click here if you are not redirected</a></p>
+</div>
 <script>
-var S={},$=function(i){return document.getElementById(i)},T;
-function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-function run(fn){var a=[].slice.call(arguments,1);return new Promise(function(ok,no){var r=google.script.run.withSuccessHandler(ok).withFailureHandler(no);r[fn].apply(r,a)})}
-function opts(el,list,first){el.innerHTML=(first?'<option value="">'+first+'</option>':'')+list.map(function(x){var v=x.v!=null?x.v:x,l=x.l!=null?x.l:x;return'<option value="'+esc(v)+'">'+esc(l)+'</option>'}).join('')}
-run('bootstrap').then(init).catch(function(e){$('who').textContent='Error';$('denied').className='';$('dmsg').textContent=e.message||e});
-function init(b){S=b;$('who').textContent=b.email||'unknown user';
- if(b.role==='none'){$('denied').className='';$('dmsg').textContent=b.email?'Your account ('+b.email+') is not listed under CMT ASSIGNEE (column L). Ask the admin to add you.':'Could not read your Google account. Sign in with your organization account and reload.';return}
- $('role').className='badge';$('role').textContent=b.role==='admin'?'Admin':'Technician';$('app').className='';
- opts($('type'),b.types);opts($('bt'),b.types);bcols();opts($('div'),b.divisions.map(function(d){return d.name}),'Select division...');opts($('sec'),[],'Select division first');
- opts($('fs'),['PENDING'].concat(b.statuses.filter(function(s){return s!=='-'})),'All statuses');opts($('ft'),b.types.concat(['UNSPECIFIED']),'All request types');
- opts($('ms'),b.statuses.filter(function(s){return s!=='-'}),'Auto status');
- if(b.links){$('adm').className='';$('adm').style.display='flex';$('lc').href=b.links.create;$('lr').href=b.links.resetpw}
- ['first','mi','last'].forEach(function(i){$(i).addEventListener('input',prev)});$('type').addEventListener('change',mode);$('bt').addEventListener('change',function(){bcols();if(BI)bprev()});$('brn').addEventListener('change',function(){if(BI)bprev()});$('bre').addEventListener('change',function(){if(BI)bprev()});$('bf').addEventListener('change',bfile);$('ddm').addEventListener('change',renderEdit);$('div').addEventListener('change',function(){var d=S.divisions.filter(function(x){return x.name===$('div').value})[0];opts($('sec'),d?d.sections:[],d?'Select section...':'Select division first')})}
-function tab(n){[1,2,3].forEach(function(i){$('p'+i).className=i===n?'':'hide';$('t'+i).className=i===n?'on':''});if(n===2)dash()}
-function uname(){var f=$('first').value.trim().split(/\s+/).filter(Boolean).map(function(w){return w[0]}).join(''),m=$('mi').value.trim(),l=$('last').value.replace(/\s+/g,'');return(f+(m?m[0]:'-')+l).toLowerCase()}
-function prev(){$('un').textContent=($('first').value.trim()||$('last').value.trim())?uname():'-'}
-var EL={first:'First name',mi:'Middle name (initial)',last:'Last name',email:'Email address'};
-function isEdit(){return $('type').value==='EDIT ENTRIES'}
-function isUO(){return (S.userOnly||[]).indexOf($('type').value)>-1}
-function mode(){var e=isEdit(),u=isUO();$('newBox').className=(e||u)?'hide':'';$('editBox').className=(e||u)?'':'hide';$('entBox').className=e?'':'hide';$('eflds').className=e?'g':'hide';$('res').innerHTML=''}
-function picked(){return [].map.call(document.querySelectorAll('#ddm input:checked'),function(c){return c.value})}
-function renderEdit(){var p=picked(),old={};[].forEach.call(document.querySelectorAll('#eflds input'),function(i){old[i.dataset.k]=i.value});
- $('ddl').textContent=p.length?p.map(function(k){return EL[k].split(' (')[0]}).join(', '):'Select entries to edit...';
- $('eflds').innerHTML=p.map(function(k){var v=old[k]!==undefined?old[k]:'';return'<div><label>New '+esc(EL[k].toLowerCase())+'</label><input data-k="'+k+'" value="'+esc(v)+'"'+(k==='mi'?' maxlength="1"':'')+(k==='email'?' type="email"':'')+'></div>'}).join('')}
-function resetForm(){['first','mi','last','email','eu'].forEach(function(i){$(i).value=''});$('div').value='';opts($('sec'),[],'Select division first');$('res').innerHTML='';
- [].forEach.call(document.querySelectorAll('#ddm input'),function(c){c.checked=false});$('eflds').innerHTML='';$('ddl').textContent='Select entries to edit...';prev()}
-function submitReq(force){var p;
- if(isEdit()){var f={};[].forEach.call(document.querySelectorAll('#eflds input'),function(i){f[i.dataset.k]=i.value});p={type:'EDIT ENTRIES',username:$('eu').value,fields:f}}
- else if(isUO())p={type:$('type').value,username:$('eu').value};
- else p={type:$('type').value,first:$('first').value,mi:$('mi').value,last:$('last').value,email:$('email').value,division:$('div').value,section:$('sec').value};
- p.rname=$('rn').value;p.remail=$('re').value;
- $('go').disabled=true;$('res').innerHTML='';
- run('submitRequest',p,force).then(function(r){$('go').disabled=false;
-  if(r.ok){var m='<div class="msg ok">Request saved ('+esc(r.type)+') - username <b>'+esc(r.username)+'</b>, row '+r.row+'. Status: pending.</div>';resetForm();$('res').innerHTML=m}
-  else if(r.confirm){if(confirm(r.error))submitReq(true)}else $('res').innerHTML='<div class="msg er">'+esc(r.error)+'</div>'})
- .catch(function(e){$('go').disabled=false;$('res').innerHTML='<div class="msg er">'+esc(e.message||e)+'</div>'})}
-var BI=null,HM={firstname:'first',first:'first',middlename:'mi',middleinitial:'mi',middle:'mi',mi:'mi',lastname:'last',last:'last',surname:'last',email:'email',emailaddress:'email',division:'division',section:'section',username:'username',adusername:'username',aduser:'username',aduseraccount:'username',requester:'rname',requestername:'rname',requesteremail:'remail'};
-function cols(t){return t==='CREATE'?['first name','middle initial','last name','email','division','section']:t==='EDIT ENTRIES'?['ad username','first name','middle name','last name','email address']:['ad username']}
-function bcols(){var t=$('bt').value;$('bcols').innerHTML='Columns for <b>'+esc(t)+'</b>: <b>'+esc(cols(t).join(', '))+'</b>'+(t==='EDIT ENTRIES'?' (leave a cell blank to keep it unchanged)':'')+'. Optional: <b>requester name, requester email</b> per row (otherwise the fields above are used). First sheet of the file is read, max 500 rows.'}
-function tpl(){var t=$('bt').value,csv=cols(t).concat(['requester name','requester email']).join(',')+'\n',a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='template_'+t.replace(/\s+/g,'_')+'.csv';document.body.appendChild(a);a.click();a.remove()}
-function bmsg(c,t){$('bres').innerHTML='<div class="msg '+c+'">'+esc(t)+'</div>'}
-function bfile(){var inp=this,f=inp.files[0];if(!f)return;
- if(typeof XLSX==='undefined'){bmsg('er','The spreadsheet reader could not load (no internet access to cdnjs). Reload and try again.');return}
- var rd=new FileReader();rd.onload=function(e){try{var wb=XLSX.read(new Uint8Array(e.target.result),{type:'array'}),j=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:'',raw:false});
-  BI=j.map(function(r,i){var o={line:i+2};Object.keys(r).forEach(function(k){var m=HM[String(k).toLowerCase().replace(/[^a-z]/g,'')];if(m&&o[m]===undefined)o[m]=String(r[k]).trim()});return o}).filter(function(o){return Object.keys(o).length>1});
-  inp.value='';bprev()}catch(x){bmsg('er','Could not read the file: '+(x.message||x))}};rd.readAsArrayBuffer(f)}
-function bpay(){return{type:$('bt').value,items:BI,rname:$('brn').value,remail:$('bre').value}}
-function bprev(){if(!BI||!BI.length){bmsg('er','No data rows found. Check that the first row has the column headings.');return}
- bmsg('ok','Checking '+BI.length+' row(s)...');
- run('submitBulk',bpay(),true).then(function(r){if(!r.ok){bmsg('er',r.error);return}
-  var rows=r.results.slice(0,300).map(function(x){return'<tr><td>'+x.line+'</td><td>'+(x.ok?'<span class="st ACTIVE">OK</span>':'<span class="st INACTIVE">ERROR</span>')+'</td><td>'+esc(x.ok?x.summary:x.msg)+'</td></tr>'}).join('');
-  $('bres').innerHTML='<div class="msg '+(r.invalid?'er':'ok')+'">'+r.valid+' row(s) ready, '+r.invalid+' with errors (errors are skipped).</div>'+(r.valid?'<div style="margin:12px 0"><button class="pb" id="bgo" onclick="bsub()">Submit '+r.valid+' valid row(s)</button></div>':'')+'<div class="tw"><table><thead><tr><th>File row</th><th>Result</th><th>Details</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+(r.results.length>300?'<div class="muted">Showing the first 300 rows.</div>':'')}).catch(function(e){bmsg('er',e.message||e)})}
-function bsub(){$('bgo').disabled=true;run('submitBulk',bpay(),false).then(function(r){if(!r.ok){bmsg('er',r.error);return}BI=null;bmsg('ok',r.added+' request(s) added to DATA rows '+r.firstRow+'-'+r.lastRow+(r.skipped.length?'; '+r.skipped.length+' row(s) skipped because of errors.':'.'))}).catch(function(e){bmsg('er',e.message||e)})}
-function dq(){clearTimeout(T);T=setTimeout(dash,350)}
-function bars(el,arr,max){$(el).innerHTML=arr.length?arr.map(function(x){var w=max?x.n/max*100:0,p=max?x.p/max*100:0;return'<div class="br" title="'+esc(x.k)+'"><span class="l">'+esc(x.k)+'</span><span class="bar"><i style="width:'+w+'%"></i><u style="width:'+p+'%"></u></span><span class="n">'+x.n+(x.p?' ('+x.p+')':'')+'</span></div>'}).join(''):'<span class="muted">No data</span>'}
-function dash(){var f={status:$('fs').value,type:$('ft').value,division:$('fd').value,from:$('ff').value,to:$('fto').value,q:$('fq').value,mine:$('fm').checked};
- run('getDashboard',f).then(function(d){var cur=$('fd').value;if($('fd').options.length<2)opts($('fd'),d.divisionsAll,'All divisions');$('fd').value=cur;
-  $('k1').textContent=d.kpi.total;$('k2').textContent=d.kpi.pending;$('k3').textContent=d.kpi.today;
-  [['bs',d.byStatus],['bt',d.byType],['bd',d.byDivision],['bc',d.bySection]].forEach(function(x){bars(x[0],x[1],x[1].length?x[1][0].n:0)});
-  var adm=d.role==='admin';$('th').innerHTML='<tr>'+(adm?'<th></th>':'')+'<th>Row</th><th>Name</th><th>Username</th><th>Type</th><th>Status</th><th>Division</th><th>Section</th><th>Requested</th><th>Acted</th><th>Technician</th><th>Requester</th><th>Notified</th><th>Edit details</th></tr>';
-  $('cnt').textContent='showing '+d.shown+' of '+d.kpi.total;
-  $('tb').innerHTML=d.list.map(function(o){return'<tr>'+(adm?'<td>'+(o.status==='PENDING'?'<input type="checkbox" class="ck" value="'+o.row+'">':'')+'</td>':'')+'<td>'+o.row+'</td><td>'+esc(o.name)+'</td><td>'+esc(o.username)+'</td><td>'+esc(o.type)+'</td><td><span class="st '+esc(o.status.split(' ')[0])+'">'+esc(o.status)+'</span></td><td>'+esc(o.division)+'</td><td>'+esc(o.section)+'</td><td>'+esc(o.requested)+'</td><td>'+esc(o.acted)+'</td><td>'+esc(o.tech)+'</td><td>'+esc(o.requester)+(o.rmail?' &lt;'+esc(o.rmail)+'&gt;':'')+'</td><td>'+esc(o.notified)+'</td><td>'+esc(o.edit)+'</td></tr>'}).join('')||'<tr><td colspan="14" class="muted">No requests match.</td></tr>'})
- .catch(function(e){$('tb').innerHTML='<tr><td class="muted">'+esc(e.message||e)+'</td></tr>'})}
-function selAll(){[].forEach.call(document.querySelectorAll('.ck'),function(c){c.checked=true})}
-function done(){var r=[].map.call(document.querySelectorAll('.ck:checked'),function(c){return Number(c.value)});if(!r.length){alert('Select pending rows first.');return}
- if(!confirm('Mark '+r.length+' request(s) as done? Date acted will be set to today.'))return;
- run('markDone',r,$('ms').value||null).then(function(x){var n=x.notify||{};alert(x.done+' request(s) updated. Emails sent: '+(n.sent||0)+(n.skipped?'; no requester email: '+n.skipped:'')+(n.failed?'; failed: '+n.failed:'')+'.');dash()}).catch(function(e){alert(e.message||e)})}
+  var APP_URL = 'https://script.google.com/a/macros/dswd.gov.ph/s/AKfycbyTMZy3LuNei1iPYBl5IPU_Cgkg5AkSMnpvQTaftDoLvHgItSL6wQjGt9O6h1Ur_fV_GA/exec';
+  if (APP_URL.indexOf('script.google.com') > -1) { window.location.replace(APP_URL); }
+  else { document.querySelector('p').textContent = 'Setup needed: open index.html and paste your Apps Script web app link.'; }
 </script>
+<noscript><p style="text-align:center"><a href="https://script.google.com/a/macros/dswd.gov.ph/s/AKfycbyTMZy3LuNei1iPYBl5IPU_Cgkg5AkSMnpvQTaftDoLvHgItSL6wQjGt9O6h1Ur_fV_GA/exec">Open the app</a></p></noscript>
 </body>
 </html>
